@@ -1,0 +1,25 @@
+<!-- archivo: camera.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acceso a la Cámara</title>
+</head>
+<body>
+    <h1>Acceso a la Cámara</h1>
+    <button onclick="openCamera()">Abrir Cámara</button>
+    <video id="video" width="640" height="480" autoplay></video>
+
+    <script>
+        function openCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    var video = document.getElementById('video');
+                    video.srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.error("Error al acceder a la cámara: ", error);
+                });
+        }
+    </script>
+</body>
+</html>
